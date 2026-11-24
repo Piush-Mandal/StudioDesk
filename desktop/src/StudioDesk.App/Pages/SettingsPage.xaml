@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="StudioDesk.App.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer>
+        <StackPanel Padding="48,32" Spacing="16" MaxWidth="800" HorizontalAlignment="Left">
+            <TextBlock Text="Settings" Style="{StaticResource TitleTextBlockStyle}" />
+
+            <!-- Appearance -->
+            <Border Padding="20" CornerRadius="8" BorderThickness="1"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                <RadioButtons x:Name="ThemeChoice" Header="Theme" SelectionChanged="ThemeChoice_SelectionChanged">
+                    <x:String>Use Windows setting</x:String>
+                    <x:String>Light</x:String>
+                    <x:String>Dark</x:String>
+                </RadioButtons>
+            </Border>
+
+            <!-- Export folder -->
+            <Border Padding="20" CornerRadius="8" BorderThickness="1"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Export folder" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <TextBlock x:Name="ExportPath" TextWrapping="Wrap" IsTextSelectionEnabled="True"
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Button Content="Change…" Click="ChangeExport_Click" Style="{StaticResource AccentButtonStyle}" />
+                        <Button Content="Open folder" Click="OpenExport_Click" />
+                        <Button x:Name="ResetExport" Content="Reset to default" Click="ResetExport_Click" />
+                    </StackPanel>
+                    <InfoBar x:Name="ExportInfo" IsClosable="True" />
+                </StackPanel>
+            </Border>
+
+            <!-- Privacy -->
+            <Border Padding="20" CornerRadius="8" BorderThickness="1"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Privacy" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                    <TextBlock TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                               Text="StudioDesk works fully offline. Your settings, logs and content are encrypted and can only be opened by StudioDesk on this Windows account." />
+                    <TextBlock x:Name="UserDataPath" TextWrapping="Wrap" IsTextSelectionEnabled="True"
+                               Style="{StaticResource CaptionTextBlockStyle}"
+                               Foreground="{ThemeResource TextFillColorTertiaryBrush}" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock x:Name="VersionText" Style="{StaticResource CaptionTextBlockStyle}"
+                       Foreground="{ThemeResource TextFillColorTertiaryBrush}" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>
